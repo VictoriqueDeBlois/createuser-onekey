@@ -1,7 +1,17 @@
 #!/bin/sh
 
-home_path=/data
-pubkey_path=/data/nfs/pubkey
+script_path="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+find_param() {
+  tmp=$(grep "$1" "$script_path/config" | sed -e "s/$1\s*=\s*//g")
+  export "$1"="$tmp"
+}
+
+home_path=
+pubkey_path=
+
+find_param home_path
+find_param pubkey_path
 
 echo '添加公钥'
 name=$1

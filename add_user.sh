@@ -1,6 +1,15 @@
 #!/bin/sh
 
-home_path=/data
+script_path="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+find_param() {
+  tmp=$(grep "$1" "$script_path/config" | sed -e "s/$1\s*=\s*//g")
+  export "$1"="$tmp"
+}
+
+home_path=
+
+find_param home_path
 
 echo '创建用户'
 

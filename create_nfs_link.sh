@@ -1,9 +1,19 @@
 #!/bin/sh
 
-home_path=/data
-share_path=/data/nfs
+script_path="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-link=$(basename $share_path)
+find_param() {
+  tmp=$(grep "$1" "$script_path/config" | sed -e "s/$1\s*=\s*//g")
+  export "$1"="$tmp"
+}
+
+home_path=
+share_path=
+
+find_param home_path
+find_param share_path
+
+link=$(basename "$share_path")
 
 echo '添加nfs链接'
 name=$1

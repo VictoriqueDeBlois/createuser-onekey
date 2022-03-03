@@ -1,7 +1,17 @@
 #!/bin/sh
 
-conda_path=/data/miniconda3
-home_path=/data
+script_path="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+find_param() {
+  tmp=$(grep "$1" "$script_path/config" | sed -e "s/$1\s*=\s*//g")
+  export "$1"="$tmp"
+}
+
+conda_path=
+home_path=
+
+find_param conda_path
+find_param home_path
 
 echo '添加conda初始化到bashrc'
 

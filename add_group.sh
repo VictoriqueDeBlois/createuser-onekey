@@ -1,6 +1,15 @@
 #!/bin/sh
 
-groups="users"
+script_path="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+find_param() {
+  tmp=$(grep "$1" "$script_path/config" | sed -e "s/$1\s*=\s*//g")
+  export "$1"="$tmp"
+}
+
+groups=
+
+find_param groups
 
 echo '添加用户到组'
 
