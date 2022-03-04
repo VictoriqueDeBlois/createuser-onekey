@@ -14,11 +14,11 @@ uid=$2
 if [ ! "$name" ];then echo '没有参数'; exit; fi
 echo "开始创建用户${name}"
 
-"$DIR"/add_user.sh "$name" "$uid"
-"$DIR"/add_group.sh "$name"
-"$DIR"/add_conda_init.sh "$name"
-"$DIR"/create_nfs_link.sh "$name"
-"$DIR"/set_condarc.sh "$name"
-"$DIR"/set_pubkey.sh "$name"
-"$DIR"/create_instruction.sh "$name"
+sh "$DIR"/add_user.sh "$name" "$uid"
+sh "$DIR"/add_group.sh "$name"
+sh "$DIR"/add_conda_init.sh "$name"
+sh "$DIR"/create_nfs_link.sh "$name"
+sh "$DIR"/set_condarc.sh "$name"
+sh "$DIR"/set_pubkey.sh "$name"
+sh "$DIR"/create_instruction.sh "$name"
 echo '创建用户结束'
