@@ -28,7 +28,7 @@ else
 	echo 'nas上文件夹已经存在';
 fi
 
-link_path="$home_path/$link"
+link_path="$home_path/$name/$link"
 if [ ! -L "$link_path" ]; then
 	sudo ln -s "$user_share_path" "$link_path";
 	sudo chown "$name":"$name" "$link_path";
