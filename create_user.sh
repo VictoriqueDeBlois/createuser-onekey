@@ -15,7 +15,6 @@ if [ ! "$name" ];then echo '没有参数'; exit; fi
 echo "开始创建用户${name}"
 
 cd DIR || sh "$DIR"/add_user.sh "$name" "$uid" || exit
-cd DIR || sh "$DIR"/add_user.sh "$name" "$uid" || exit
 cd DIR || sh "$DIR"/add_group.sh "$name" || exit
 cd DIR || sh "$DIR"/add_conda_init.sh "$name" || exit
 cd DIR || sh "$DIR"/create_nfs_link.sh "$name" || exit
