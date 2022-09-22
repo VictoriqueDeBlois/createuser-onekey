@@ -28,6 +28,7 @@ fi
 
 if [ -f "$pubkey_path/${name}.pub" ]; then
 	sudo cp "$pubkey_path/${name}.pub" "$home_path/$name/.ssh/authorized_keys";
+	sudo chown "$name":"$name" "$home_path/$name/.ssh/authorized_keys";
 	sudo chmod 600 "$home_path/$name/.ssh/authorized_keys";
 else
 	echo '公钥文件不存在';
